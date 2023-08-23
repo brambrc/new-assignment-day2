@@ -12,9 +12,10 @@ function addNewBook(req, res) {
 }
 
 function updateExistingBook(req, res) {
-    const bookId = parseInt(req.params.booksId);
-    const updatedBook = req.body;
-    const result = BookModel.updateBook(bookId, updatedBook);
+    console.log(req.body, req.params.bookId);
+    // const bookId = parseInt(req.params.booksId);
+    // const updatedBook = req.body;
+    const result = BookModel.updateBook(parseInt(req.params.bookId), req.body);
     
     if (result) {
         res.status(200).json(result);
@@ -25,7 +26,7 @@ function updateExistingBook(req, res) {
 
 function removeBook(req, res) {
     const bookId = parseInt(req.params.bookId);
-    const result = BookModel.deleteBook(bookId);
+    const result = BookModel.deleteBook(parseInt(req.params.bookId));
 
     if (result) {
         res.status(200).json({ message: 'Book deleted successfully' });

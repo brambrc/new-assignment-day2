@@ -15,6 +15,7 @@ function addBook(book) {
 }
 
 function updateBook(id, updatedBook) {
+    console.log("Log from model", id, updateBook);
     const index = books.findIndex(book => book.id === id);
     if (index !== -1) {
         books[index] = { ...books[index], ...updatedBook };
