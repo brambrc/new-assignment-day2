@@ -24,14 +24,14 @@ const findAll = () => {
 }
 
 const create = ({ name, price, stock }) => {
-    let newData = {
+    let product = {
         id: data.length + 1,
         name: name,
         price: price,
         stock: stock
     }
 
-    return data.push(newData)
+    return data.push(product)
 }
 
 const find = ({ id }) => {
@@ -39,15 +39,25 @@ const find = ({ id }) => {
 }
 
 const update = (id, {name, price, stock}) => {
-    const books = find({id})
+    const product = find({id})
 
-    if(!books) return false
+    if(!product) return false
 
-    books.name = name || books.name
-    books.price = parseInt(price) || books.price
-    books.stock = parseInt(stock) || books.stock
+    product.name = name || product.name
+    product.price = parseInt(price) || product.price
+    product.stock = parseInt(stock) || product.stock
 
-    return books
+    return product
+
+}
+
+const destroy = (id) => {
+
+    let product = find({id})
+    if(!product) return false
+
+    data = data.filter(data => data.id !== product.id)
+    return true
 
 }
 
@@ -55,5 +65,6 @@ module.exports = {
     findAll,
     create,
     find,
-    update
+    update,
+    destroy
 }

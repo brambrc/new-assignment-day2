@@ -55,6 +55,18 @@ const update = (req, res, next) => {
 
 }
 
+const destroy = (req, res, next) => {
+
+    const id = parseInt(req.params.id)
+    if(!id) return res.status(400).json({
+        result: 'error',
+        message: 'Parameter tidak valid'
+    })
+
+    next()
+
+}
+
 function isEmptyObject(object){
     for(let value in object){
         if(Object.hasOwn(object, value)){
@@ -67,5 +79,6 @@ function isEmptyObject(object){
 module.exports = {
     create,
     details,
-    update
+    update,
+    destroy
 }
