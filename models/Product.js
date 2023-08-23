@@ -23,6 +23,20 @@ const findAll = () => {
     return data
 }
 
+const create = ({name, price, stock}) => {
+    let newData = [
+        {
+            id: data.length + 1,
+            name: name,
+            price: price,
+            stock: stock
+        }
+    ]
+
+    return data.push(newData)
+}
+
 module.exports = {
-    findAll
+    findAll,
+    create
 }

@@ -12,6 +12,24 @@ const get = (req, res) => {
 
 }
 
+const create = (req, res) => {
+
+    const {name, price, stock} = req.body
+
+    const data = Product.create({
+        name: name,
+        price: price,
+        stock: stock
+    })
+
+    return res.json({
+        result: 'success',
+        message: 'Berhasil membuat data baru'
+    })
+
+}
+
 module.exports = {
-    get
+    get,
+    create
 }
