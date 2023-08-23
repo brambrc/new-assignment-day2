@@ -38,8 +38,22 @@ const find = ({ id }) => {
     return data.find(data => data.id == id)
 }
 
+const update = (id, {name, price, stock}) => {
+    const books = find({id})
+
+    if(!books) return false
+
+    books.name = name || books.name
+    books.price = parseInt(price) || books.price
+    books.stock = parseInt(stock) || books.stock
+
+    return books
+
+}
+
 module.exports = {
     findAll,
     create,
-    find
+    find,
+    update
 }

@@ -48,8 +48,33 @@ const details = (req, res) => {
 
 }
 
+const update = (req, res) => {
+
+    const {name, price, stock} = req.body
+    const id = req.params.id
+
+    const book = Product.update(id, {
+        name: name,
+        price: price,
+        stock: stock
+    })
+
+    if(!book) return res.status(404).json({
+        result: 'error',
+        message: `Data buku dengan parameter id ${id} tidak ditemukan`
+    })
+
+    return res.json({
+        result: 'success',
+        message: 'Berhasil mengupdate data',
+        data: book
+    })
+
+}
+
 module.exports = {
     get,
     create,
-    details
+    details,
+    update
 }
