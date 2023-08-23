@@ -12,7 +12,7 @@ function addNewBook(req, res) {
 }
 
 function updateExistingBook(req, res) {
-    const bookId = parseInt(req.params.id);
+    const bookId = parseInt(req.params.booksId);
     const updatedBook = req.body;
     const result = BookModel.updateBook(bookId, updatedBook);
     
@@ -24,7 +24,7 @@ function updateExistingBook(req, res) {
 }
 
 function removeBook(req, res) {
-    const bookId = parseInt(req.params.id);
+    const bookId = parseInt(req.params.bookId);
     const result = BookModel.deleteBook(bookId);
 
     if (result) {
