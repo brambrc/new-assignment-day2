@@ -23,20 +23,18 @@ const findAll = () => {
     return data
 }
 
-const create = ({name, price, stock}) => {
-    let newData = [
-        {
-            id: data.length + 1,
-            name: name,
-            price: price,
-            stock: stock
-        }
-    ]
+const create = ({ name, price, stock }) => {
+    let newData = {
+        id: data.length + 1,
+        name: name,
+        price: price,
+        stock: stock
+    }
 
     return data.push(newData)
 }
 
-const find = ({id}) => {
+const find = ({ id }) => {
     return data.find(data => data.id == id)
 }
 
