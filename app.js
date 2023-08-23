@@ -1,14 +1,13 @@
 const express = require('express');
-// Import controller disini
+const bodyparser = require('body-parser')
 
 const app = express();
-const port = 3000;
 
-app.use(express.json());
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}))
 
-// tulis api kalian disini
+const ProductRouter = require('./routes/ProductRouter')
 
+app.use('/products', ProductRouter)
 
-app.listen(port, () => {
-    console.log(`Bookstore MVC API running at http://localhost:${port}`);
-});
+module.exports = app
