@@ -9,17 +9,27 @@ function getAllBooks() {
 }
 
 function addBook(book) {
-    
+    const newBook = { id: books.length + 1, ...book};
+    books.push(newBook);
     return newBook;
 }
 
 function updateBook(id, updatedBook) {
-   
+    const index = books.findIndex(book => book.id === id);
+    if (index !== -1) {
+        books[index] = { ...books[index], ...updatedBook };
+        return books[index];
+    }
+    return null;
 }
 
 function deleteBook(id) {
-   
-    return true;
+    const index = books.findIndex(book => book.id === id);
+    if (index !== -1) {
+        books.splice(index, 1);
+        return true;
+    }
+    return false;
 }
 
 module.exports = {
