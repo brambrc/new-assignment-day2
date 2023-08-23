@@ -19,6 +19,20 @@ const create = (req, res, next) => {
 
 }
 
+const details = (req, res, next) => {
+
+    const id = parseInt(req.params.id)
+
+    if(!id || isNaN(id)) return res.status(404).json({
+        result: 'error',
+        message: 'Invalid params id'
+    })
+
+    req.id = id
+    next()
+
+}
+
 function isEmptyObject(object){
     for(let value in object){
         if(Object.hasOwn(object, value)){
@@ -29,5 +43,6 @@ function isEmptyObject(object){
 }
 
 module.exports = {
-    create
+    create,
+    details
 }

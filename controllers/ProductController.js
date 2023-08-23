@@ -29,7 +29,27 @@ const create = (req, res) => {
 
 }
 
+const details = (req, res) => {
+
+    const data = Product.find({
+        id: req.id
+    })
+
+    if(!data) return res.status(404).json({
+        result: 'error',
+        message: 'Data tidak ditemukan'
+    })
+
+    return res.json({
+        result: 'success',
+        message: 'Data berhasil di temukan',
+        data: data
+    })
+
+}
+
 module.exports = {
     get,
-    create
+    create,
+    details
 }
