@@ -36,7 +36,12 @@ const create = ({name, price, stock}) => {
     return data.push(newData)
 }
 
+const find = ({id}) => {
+    return data.find(data => data.id == id)
+}
+
 module.exports = {
     findAll,
-    create
+    create,
+    find
 }
