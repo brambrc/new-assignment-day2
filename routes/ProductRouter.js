@@ -6,5 +6,6 @@ const ProductMiddleware = require('../middleware/ProductMiddleware')
 
 router.get('/', ProductController.get)
 router.post('/', [ProductMiddleware.create, ProductController.create])
+router.get('/:id', [ProductMiddleware.details, ProductController.details])
 
 module.exports = router
