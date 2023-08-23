@@ -27,8 +27,8 @@ const create = ({ name, price, stock }) => {
     let product = {
         id: data.length + 1,
         name: name,
-        price: price,
-        stock: stock
+        price: parseInt(price),
+        stock: parseInt(stock)
     }
 
     return data.push(product)
