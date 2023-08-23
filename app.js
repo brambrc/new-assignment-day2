@@ -1,14 +1,17 @@
 const express = require('express');
-// Import controller disini
-
+const courseController = require('./controllers/courseController');
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 
-// tulis api kalian disini
+app.get('/course', courseController.getCourse);
+app.post('/course', courseController.addNewCourse);
+app.put('/course/:id', courseController.updateExistingCourse);
+app.delete('/course/:id', courseController.removeCourse);
+
 
 
 app.listen(port, () => {
-    console.log(`Bookstore MVC API running at http://localhost:${port}`);
-});
+    console.log(`Server is running on port ${port}`);
+})
